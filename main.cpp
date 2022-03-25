@@ -5,8 +5,8 @@ int main(int argc, char *argv[]) {
 
   LinearHashTable table;
   // table.setD(0);
-  table.setN(0);
-  table.setQ(0);
+  table.setNumSaved(0);
+  table.setNumSavedOrDeleted(0);
 
   table.add(41025703);
   table.add(41025717);

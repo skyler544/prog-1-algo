@@ -7,19 +7,19 @@ private:
   static const int EMPTY = 0;
   static const int DEL = -1;
   static const int HASH_MODULUS = 100;
-  int t[SIZE];
-  int n;
-  int q;
-  int d;
+  int table[SIZE];
+  int numSaved;
+  int numSavedOrDeleted;
+  /* int d; */
 
 public:
-  int *getT();
-  int getN();
-  int getQ();
-  int getD();
-  void setN(int newVal);
-  void setQ(int newVal);
-  void setD(int newVal);
+  int *getTable();
+  int getNumSaved();
+  int getNumSavedOrDeleted();
+  /* int getD(); */
+  void setNumSaved(int newVal);
+  void setNumSavedOrDeleted(int newVal);
+  /* void setD(int newVal); */
   void storeHashed(int entry);
   int hash(int entry);
   int find(int x);
