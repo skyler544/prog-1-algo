@@ -3,7 +3,11 @@
 
 class LinearHashTable {
 private:
-  int t[10];
+  static const int SIZE = 13;
+  static const int EMPTY = 0;
+  static const int DEL = -1;
+  static const int HASH_MODULUS = 100;
+  int t[SIZE];
   int n;
   int q;
   int d;
@@ -19,6 +23,9 @@ public:
   void storeHashed(int entry);
   int hash(int entry);
   int find(int x);
+  int remove(int x);
+  bool add(int x);
+  void printTable();
 };
 
 #endif // LINEARHASHTABLE_H_
