@@ -17,6 +17,7 @@ public:
   void setQ(int newVal);
   void setD(int newVal);
   void storeHashed(int entry);
+  int hash(int entry);
   int find(int x);
 };
 
