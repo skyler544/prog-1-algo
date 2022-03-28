@@ -4,70 +4,140 @@
 
 // are these methods needed? it seems like this will never be used
 void LHT::setNumSaved(int newVal) { numSaved = newVal; }
-void LHT::setNumSavedOrDeleted(int newVal) {
-  numSavedOrDeleted = newVal;
-}
+void LHT::setNumSavedOrDeleted(int newVal) { numSavedOrDeleted = newVal; }
 // void LinearHashTable::setD(int newVal) { d = newVal; }
 
+// TODO add a condition that stops the search after x amount of time
+// TODO add a condition that prevents the table from becoming overly full
+// TODO do we need that condition if the table is large enough?
 
 /* Find an entry in the hash table. */
 Stock LHT::find(Stock entry) {
 
   // first, find the appropriate index
   int i = hash(entry.getShortName());
-  // prepare a counter for the linear probing
+  // prepare a counter and a step size for the linear probing
   int step = 0;
+  int base = i;
 
   // if we reach en empty index,  we know that the element
   // we want is not in the table
   while (table[i].getEmpty() != EMPTY) {
 
+    // we can take advantage of short circuit evaluation to
+    // condense this logic. in the case that the current
+    // index has been deleted, there's no need to evaluate
+    // the right hand side of the && operator, so it simply
+    // isn't evaluated.
     if (table[i].getDeleted() != DEL &&
-        table[i].getShortName() == entry.getShortName())
+        table[i].getShortName() == entry.getShortName()) {
+      // found the element; return it
       return table[i];
+    }
 
-    i = (i == SIZE - 1) ? 0 : i + 1; // quadratic probing here
+    // the element hasn't been found yet, so we'll use
+    // quadratic probing to look for another place to put it
+    step++;
+    i = (base + (step * step)) % SIZE;
   }
-  // should be an empty Stock; TODO check this
+  // return an empty Stock
   return table[i];
 }
 
+/* Add a new Stock to the table. */
 bool LHT::add(Stock entry) {
-  if (find(entry).getDeleted() != EMPTY)
+
+  // Don't try to add a duplicate element
+  if (find(entry).getDeleted() != EMPTY) {
     return false;
-  // if (2*(q+1) > SIZE) resize
+  }
+
+  // find the appropriate index
   int i = hash(entry.getShortName());
-  while (table[i].getEmpty() != EMPTY && table[i].getDeleted() != DEL)
-    i = (i == SIZE - 1) ? 0 : i + 1; // quadratic probing here
-  if (table[i].getDeleted() == EMPTY)
+  // prepare a counter and a step size for the linear probing
+  int step = 0;
+  int base = i;
+
+  // if the position is occupied, we use quadratic
+  // probing to look for another place to put it
+  while (table[i].getEmpty() != EMPTY && table[i].getDeleted() != DEL) {
+    step++;
+    i = (base + (step * step)) % SIZE;
+  }
+
+
+  // increment the counters...
+  // is this check even necessary? the logic is clear enough:
+  // if we made it through the while loop up above, then there
+  // should be no question as to whether we found a place to
+  // insert the new entry; we should just insert it. IF however,
+  // the search took too long and we couldn't find a free position,
+  // we won't add the entry and will leave this function by returning
+  // false. Both cases make this boolean check redundant.
+
+  // TODO: refactor this piece of shit
+
+  if (table[i].getEmpty() == EMPTY) {
     numSavedOrDeleted++;
+  }
+
   numSaved++;
   table[i] = entry;
   return true;
 }
 
+/* Remove an entry from the table. */
 bool LHT::remove(Stock entry) {
+
+  // find the appropriate index
   int i = hash(entry.getShortName());
+  // prepare a counter and a step size for the linear probing
+  int step = 0;
+  int base = i;
+
+  // look for the entry until ...
+  // TODO: add a condition to stop after a long (?) time
   while (table[i].getEmpty() != EMPTY) {
+
     Stock curr = table[i];
+
     if (curr.getDeleted() != DEL &&
         entry.getShortName() == curr.getShortName()) {
+
+      // we found the element we want to remove, so
+      // go ahead and delete it.
+      // TODO: think about the details of the delete function
       table[i].setDeleted();
       numSaved--;
-      // if(8*n < SIZE)
+
       return true;
     }
-    i = (i == SIZE - 1) ? 0 : i + 1; // quadratic probing here
+
+    // quadratic probing; see comments in other functions
+    step++;
+    i = (base + (step * step)) % SIZE;
   }
+
+  // didn't find it, give up and return false
   return false;
 }
 
+// hash the given word by converting each letter
+// to an int and then adding them together.
+// TODO: how much should this be truncated? not at all?
+// TODO: does having a prime number as the table length
+//       and quadratic probing ensure that even if all
+//       the resulting indexes were below 200 or something,
+//       even large indexes like 790 are feasibly addressed?
+//       does this lead to too much clustering?
 int LHT::hash(std::string shortName) {
   int sum = 0;
-  for (int i = 0; i < shortName.length(); i++)
+
+  for (int i = 0; i < shortName.length(); i++) {
     sum = sum + int(shortName[i]);
+  }
+
   return sum % SIZE;
-  // return ((unsigned)(entry % HASH_MODULUS) % SIZE);
 }
 
 void LHT::printTable() {
