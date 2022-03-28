@@ -1,8 +1,8 @@
-#ifndef LINEARHASHTABLE_H_
-#define LINEARHASHTABLE_H_
+#ifndef LHT_H_
+#define LHT_H_
 #include "Stock.h"
 
-class LinearHashTable {
+class LHT {
 private:
   static const int SIZE = 13;
   static const int EMPTY = 0;
@@ -29,4 +29,4 @@ public:
   void printTable();
 };
 
-#endif // LINEARHASHTABLE_H_
+#endif // LHT_H_
