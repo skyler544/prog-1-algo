@@ -1,5 +1,6 @@
 #ifndef LINEARHASHTABLE_H_
 #define LINEARHASHTABLE_H_
+#include "Stock.h"
 
 class LinearHashTable {
 private:
@@ -7,13 +8,13 @@ private:
   static const int EMPTY = 0;
   static const int DEL = -1;
   static const int HASH_MODULUS = 100;
-  int table[SIZE];
+  Stock table[SIZE];
   int numSaved;
   int numSavedOrDeleted;
   /* int d; */
 
 public:
-  int *getTable();
+  // int *getTable();
   int getNumSaved();
   int getNumSavedOrDeleted();
   /* int getD(); */
@@ -21,10 +22,10 @@ public:
   void setNumSavedOrDeleted(int newVal);
   /* void setD(int newVal); */
   void storeHashed(int entry);
-  int hash(int entry);
-  int find(int x);
-  int remove(int x);
-  bool add(int x);
+  int hash(Stock entry);
+  Stock find(Stock entry);
+  bool remove(Stock entry);
+  bool add(Stock entry);
   void printTable();
 };
 
