@@ -22,9 +22,11 @@ public:
   int getDeleted();
   void setEmpty();
   int getEmpty();
+  std::string getShortName();
   void setHead(StockNode *n);
   void prepend(StockNode *n);
   void printList();
+  void printStock();
 };
 
 #endif // STOCK_H_
