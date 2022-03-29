@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
   // table.add(41025749);
   // table.add(41025773);
 
-  table.printTable();
+  // table.printTable();
 
   return 0;
 }

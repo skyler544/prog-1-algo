@@ -10,7 +10,9 @@ private:
   std::string shortName;
 
   int deletedFlag; // -1 for deleted stock
-  int emptyFlag; // 0 for an empty stock
+  int emptyFlag;   // 0 for an empty stock
+
+  StockNode kursdaten[30];
 
   StockNode *head;
 
@@ -23,6 +25,7 @@ public:
   void setHead(StockNode *n);
   void prepend(StockNode *n);
 
+  void readFile(std::string fileName);
   bool loadData(std::string file);
   void printData();
   void printStock();
