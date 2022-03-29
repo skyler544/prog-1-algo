@@ -7,10 +7,9 @@ Stock::Stock(std::string n, std::string i, std::string s) {
   name = n;
   idNumber = i;
   shortName = s;
-  emptyFlag = 0;
+  emptyFlag = 1;
 }
 
-void Stock::setDeleted() { deletedFlag = -1; }
 
 void Stock::printStock() {
   std::cout << "Date: " << name << "\n";
@@ -32,3 +31,8 @@ void Stock::prepend(StockNode *n) {
   n->setNext(tmp);
   head = n;
 }
+
+void Stock::setDeleted() { deletedFlag = -1; }
+int Stock::getDeleted() { return deletedFlag; }
+void Stock::setEmpty() { emptyFlag = 0; }
+int Stock::getEmpty() { return emptyFlag = -1; }

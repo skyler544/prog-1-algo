@@ -91,7 +91,7 @@ bool LHT::remove(Stock entry) {
 
   // find the appropriate index
   int i = hash(entry.getShortName());
-  // prepare a counter and a step size for the linear probing
+  // prepare a counter and a step size for the quadratic probing
   int step = 0;
   int base = i;
 

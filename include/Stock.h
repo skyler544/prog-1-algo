@@ -17,17 +17,20 @@ private:
 public:
   Stock();
   Stock(std::string n, std::string i, std::string s);
+
   StockNode *getHead();
+  std::string getShortName();
+  void setHead(StockNode *n);
+  void prepend(StockNode *n);
+
+  bool loadData();
+  void printData();
+  void printStock();
+
   void setDeleted();
   int getDeleted();
   void setEmpty();
   int getEmpty();
-  std::string getShortName();
-  void setHead(StockNode *n);
-  void prepend(StockNode *n);
-  bool loadData();
-  void printData();
-  void printStock();
 };
 
 #endif // STOCK_H_
