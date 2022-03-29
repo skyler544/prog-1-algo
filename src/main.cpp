@@ -1,3 +1,4 @@
+#include "Controller.h"
 #include "LHT.h"
 #include <iostream>
 
@@ -6,6 +7,10 @@ int main(int argc, char *argv[]) {
   LHT table;
   table.setNumSaved(0);
   table.setNumSavedOrDeleted(0);
+
+  Controller controller;
+
+  controller.menu();
 
   // table.add(41025703);
   // table.add(41025717);

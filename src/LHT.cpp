@@ -133,7 +133,7 @@ bool LHT::remove(Stock entry) {
 int LHT::hash(std::string shortName) {
   int sum = 0;
 
-  for (int i = 0; i < shortName.length(); i++) {
+  for (long unsigned int i = 0; i < shortName.length(); i++) {
     sum = sum + int(shortName[i]);
   }
 

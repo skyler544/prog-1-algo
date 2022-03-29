@@ -3,9 +3,8 @@
 #include <iostream>
 
 class Controller {
-private:
-
 public:
+    void menu();
     bool add();
     bool del();
     bool import();
