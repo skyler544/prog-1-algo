@@ -2,6 +2,8 @@
 #define LHT_H_
 #include "Stock.h"
 
+// LHT = Linear Hash Table
+
 class LHT {
 private:
   static const int SIZE = 13;

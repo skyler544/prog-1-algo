@@ -25,7 +25,8 @@ public:
   std::string getShortName();
   void setHead(StockNode *n);
   void prepend(StockNode *n);
-  void printList();
+  bool loadData();
+  void printData();
   void printStock();
 };
 
