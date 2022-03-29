@@ -10,6 +10,9 @@ Stock::Stock(std::string n, std::string i, std::string s) {
   emptyFlag = 1;
 }
 
+bool loadData(std::string file) {
+   return false;
+}
 
 void Stock::printStock() {
   std::cout << "Date: " << name << "\n";

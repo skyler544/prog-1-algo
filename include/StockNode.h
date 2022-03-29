@@ -16,8 +16,7 @@ private:
   StockNode *next;
 
 public:
-  StockNode(std::tm d, double o, double h, double l,
-            double c, double ac, int v);
+  StockNode(std::tm d, double o, double h, double l, double c, double ac, int v);
 
   void printStockNode();
 

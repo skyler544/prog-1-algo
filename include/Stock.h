@@ -23,7 +23,7 @@ public:
   void setHead(StockNode *n);
   void prepend(StockNode *n);
 
-  bool loadData();
+  bool loadData(std::string file);
   void printData();
   void printStock();
 

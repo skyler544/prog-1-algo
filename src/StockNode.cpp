@@ -9,8 +9,8 @@ StockNode::StockNode(std::tm d, double o, double h, double l,
   high = h;
   low = l;
   close = c;
-  volume = v;
   adj_close = ac;
+  volume = v;
 
   next = NULL;
 }
