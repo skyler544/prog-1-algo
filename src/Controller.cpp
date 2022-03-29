@@ -46,11 +46,12 @@ void Controller::menu() {
 
 bool Controller::add() {
 
-    std::string n, i, s;
+  std::string n, i, s;
 
-    std::cout << "Enter the name of the stock, its ISIN (WKN), and abbreviated name.";
+  std::cout
+      << "Enter the name of the stock, its ISIN (WKN), and abbreviated name.";
 
-    return false;
+  return false;
 }
 bool Controller::del() { return false; }
 bool Controller::import() { return false; }

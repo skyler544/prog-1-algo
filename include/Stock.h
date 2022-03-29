@@ -24,6 +24,7 @@ public:
   std::string getShortName();
   void setHead(StockNode *n);
   void prepend(StockNode *n);
+  void append(StockNode *n);
 
   void readFile(std::string fileName);
   bool loadData(std::string file);

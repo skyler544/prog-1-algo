@@ -1,4 +1,5 @@
 #include "Controller.h"
+#include "Stock.h"
 #include "LHT.h"
 #include <iostream>
 
@@ -10,7 +11,12 @@ int main(int argc, char *argv[]) {
 
   Controller controller;
 
-  controller.menu();
+  Stock test;
+
+  test.readFile("aux/MSFT.csv");
+
+  // controller.menu();
+
 
   // table.add(41025703);
   // table.add(41025717);

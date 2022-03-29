@@ -1,7 +1,7 @@
 #include "Stock.h"
 #include "StockNode.h"
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 Stock::Stock() { emptyFlag = 0; }
 
@@ -29,22 +29,52 @@ void Stock::printData() {
   }
 }
 
+void Stock::append(StockNode *n) {
+  if (head == NULL) {
+    head = n;
+  } else {
+    StockNode *tmp = head;
+    while (tmp->getNext() != NULL) {
+      tmp = tmp->getNext();
+    }
+    tmp->setNext(n);
+  }
+}
+
 void Stock::prepend(StockNode *n) {
-  StockNode *tmp = head;
-  n->setNext(tmp);
-  head = n;
+  if (head == NULL) {
+    head = n;
+  } else {
+    StockNode *tmp = head;
+    n->setNext(tmp);
+    head = n;
+  }
 }
 
 void Stock::readFile(std::string fileName) {
-  std::ifstream inf(fileName);
+  std::ifstream inf;
+  inf.open(fileName);
 
   int count = 0;
+  std::string line;
 
   while (!inf.eof()) {
+    getline(inf, line);
     count++;
   }
 
-  for (int i = count - 30; !inf.eof() && i < 30; i++) {
+  inf.close();
+
+  inf.open(fileName);
+
+  int mark = 0;
+
+  while (mark < count - 30) {
+    getline(inf, line);
+    mark++;
+  }
+
+  for (int i = 0; !inf.eof(); i++) {
     std::string date, open, high, low, close, adj_close, volume;
     getline(inf, date, ',');
     getline(inf, open, ',');
@@ -54,9 +84,15 @@ void Stock::readFile(std::string fileName) {
     getline(inf, adj_close, ',');
     getline(inf, volume, '\n');
 
-    StockNode tmp(date, open, high, low, close, adj_close, volume);
-    kursdaten[i] = tmp;
+    // StockNode *tmp = new StockNode(date, open, high, low, close, adj_close, volume);
+    prepend(new StockNode(date, open, high, low, close, adj_close, volume));
+
+    // StockNode tmp(date, open, high, low, close, adj_close, volume);
+    // kursdaten[i] = tmp;
+    // kursdaten[i].printStockNode();
   }
+
+  printData();
 }
 
 std::string Stock::getShortName() { return shortName; }
