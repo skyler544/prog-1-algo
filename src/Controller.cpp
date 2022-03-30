@@ -63,18 +63,17 @@ bool Controller::add() {
   std::cout << "Enter the abbreviated name: ";
   std::cin >> abbreviation;
 
-  Stock newStock(name, isin, abbreviation);
-
-  // newStock.printStock();
-
-  table.add(newStock);
-
+  table.add(Stock(name, isin, abbreviation));
   table.printTable();
 
   return true;
 }
+
 bool Controller::del() { return false; }
-bool Controller::import() { return false; }
+
+bool Controller::import() {
+  return false;
+}
 
 bool Controller::search() {
   std::string abbreviation;

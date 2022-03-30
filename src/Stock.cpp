@@ -23,7 +23,7 @@ bool loadData(std::string file) { return false; }
 
 void Stock::printStock() {
   std::cout << "====================\n";
-  std::cout << "        Date: " << name << "\n";
+  std::cout << "        Name: " << name << "\n";
   std::cout << "  ISIN (WKN): ";
   std::cout << isin << "\n";
   std::cout << "Abbreviation: " << abbreviation << "\n";
