@@ -1,10 +1,15 @@
 #include "LHT.h"
 #include "Stock.h"
 #include <iostream>
+#include <fstream>
 
 // TODO add a condition that stops the search after x amount of time
 // TODO add a condition that prevents the table from becoming overly full
 // TODO do we need that condition if the table is large enough?
+
+// LHT::LHT() {
+//   numSave
+// }
 
 /* Find an entry in the hash table. */
 Stock LHT::find(Stock entry) {
@@ -125,6 +130,29 @@ bool LHT::remove(Stock entry) {
   }
 
   // didn't find it, give up and return false
+  return false;
+}
+
+bool load(std::string file) {
+
+  // file stream
+
+  // file stream in unsere hash tabelle umwandeln
+
+  // bool zurück geben
+
+  return false;
+}
+
+bool save(std::string file) {
+
+  // file stream
+  // std::ofstream outfile (file);
+
+  //  hash tabelle in einer datei ausschreiben
+
+  // bool zurück geben
+
   return false;
 }
 

@@ -81,6 +81,8 @@ void Stock::readFile(std::string fileName) {
     mark++;
   }
 
+  // TODO: figure out how to remove the weekends
+
   for (int i = 0; !inf.eof(); i++) {
     std::string date, open, high, low, close, adj_close, volume;
     getline(inf, date, ',');
@@ -100,6 +102,7 @@ void Stock::readFile(std::string fileName) {
     // kursdaten[i].printStockNode();
   }
 
+  inf.close();
   printData();
 }
 

@@ -6,21 +6,24 @@
 
 class LHT {
 private:
-  int SIZE = 1847;
+  static const int SIZE = 1847;
   static const int EMPTY = 0;
   static const int DEL = -1;
   static const int LIMIT = 200;
 
   Stock table[SIZE];
-  int numSaved;
-  int numSavedOrDeleted;
+  int numSaved = 0;
+  int numSavedOrDeleted = 0;
 
 public:
+  // LHT();
   void storeHashed(int entry);
   int hash(std::string abbreviation);
   Stock find(Stock entry);
   bool remove(Stock entry);
   bool add(Stock entry);
+  bool load(std::string file);
+  bool save(std::string file);
   void printTable();
 };
 

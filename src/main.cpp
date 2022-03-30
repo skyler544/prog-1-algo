@@ -6,12 +6,10 @@
 int main(int argc, char *argv[]) {
 
   LHT table;
-  table.setNumSaved(0);
-  table.setNumSavedOrDeleted(0);
 
   Controller controller;
 
-  Stock test;
+  // Stock test;
 
   // test.readFile("aux/MSFT.csv");
 
