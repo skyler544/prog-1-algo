@@ -9,13 +9,13 @@ int main(int argc, char *argv[]) {
 
   Controller controller;
 
-  std::cout << sizeof(table);
+  // std::cout << sizeof(Stock);
 
   // Stock test;
 
   // test.readFile("aux/MSFT.csv");
 
-  // controller.menu();
+  controller.menu();
 
   // table.add(41025703);
   // table.add(41025717);
