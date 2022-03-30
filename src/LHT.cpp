@@ -108,7 +108,7 @@ bool LHT::remove(Stock entry) {
 
   // look for the entry until ...
   // TODO: add a condition to stop after a long (?) time
-  while (table[i].getEmpty() != EMPTY) {
+  while (table[i].getEmpty() != EMPTY && step < LIMIT) {
 
     Stock curr = table[i];
 
@@ -143,16 +143,9 @@ bool LHT::remove(Stock entry) {
 //       does this lead to too much clustering?
 int LHT::hash(std::string abbreviation) {
   int sum = 0;
-
-  // std::cout << "sn: " << abbreviation.length() << "\n";
-
   for (long unsigned int i = 0; i < abbreviation.length(); i++) {
     sum = sum + int(abbreviation[i]);
-    // std::cout << sum << "\n";
   }
-
-  // std::cout << "mod sum: " << sum % SIZE << "\n";
-
   return sum % SIZE;
 }
 

@@ -71,12 +71,21 @@ bool Controller::add(bool withCSV, std::string file) {
   }
 
   table.add(newEntry);
-  table.printTable();
+  // table.printTable();
 
   return true;
 }
 
-bool Controller::del() { return false; }
+bool Controller::del() {
+
+  std::string abbreviation;
+  std::cout << "Enter the abbreviated name: ";
+  std::cin >> abbreviation;
+
+  bool result = table.remove(Stock("", "", abbreviation));
+
+  return result;
+}
 
 bool Controller::import() {
   std::string file;
