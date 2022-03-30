@@ -6,7 +6,7 @@
 class Stock {
 private:
   std::string name;
-  std::string isin;
+  std::string isin; // International Securities Identification Number (WKN)
   std::string abbreviation;
 
   int deletedFlag; // -1 for deleted stock

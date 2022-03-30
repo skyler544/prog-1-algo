@@ -17,13 +17,6 @@ private:
   /* int d; */
 
 public:
-  // int *getTable();
-  int getNumSaved();
-  int getNumSavedOrDeleted();
-  /* int getD(); */
-  void setNumSaved(int newVal);
-  void setNumSavedOrDeleted(int newVal);
-  /* void setD(int newVal); */
   void storeHashed(int entry);
   int hash(std::string abbreviation);
   Stock find(Stock entry);

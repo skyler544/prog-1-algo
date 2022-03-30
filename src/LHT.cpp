@@ -2,11 +2,6 @@
 #include "Stock.h"
 #include <iostream>
 
-// are these methods needed? it seems like this will never be used
-void LHT::setNumSaved(int newVal) { numSaved = newVal; }
-void LHT::setNumSavedOrDeleted(int newVal) { numSavedOrDeleted = newVal; }
-// void LinearHashTable::setD(int newVal) { d = newVal; }
-
 // TODO add a condition that stops the search after x amount of time
 // TODO add a condition that prevents the table from becoming overly full
 // TODO do we need that condition if the table is large enough?
