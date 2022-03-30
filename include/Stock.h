@@ -27,7 +27,6 @@ public:
   void append(StockNode *n);
 
   void readFile(std::string fileName);
-  bool loadData(std::string file);
   void printData();
   void printStock();
 

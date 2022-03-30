@@ -21,7 +21,7 @@ void Controller::menu() {
 
     switch (input) {
     case (1):
-      confirmation(loop = add());
+      confirmation(loop = add(false, ""));
       break;
     case (2):
       confirmation(loop = del());
@@ -30,7 +30,7 @@ void Controller::menu() {
       confirmation(loop = import());
       break;
     case (4):
-      confirmation(loop = search());
+      confirmation(loop = search(false, ""));
       break;
     case (5):
       confirmation(loop = plot());
@@ -52,7 +52,7 @@ void Controller::confirmation(bool result) {
   result ? std::cout << "Success\n" : std::cout << "Failure\n";
 }
 
-bool Controller::add() {
+bool Controller::add(bool withCSV, std::string file) {
 
   std::string name, isin, abbreviation;
 
@@ -63,7 +63,14 @@ bool Controller::add() {
   std::cout << "Enter the abbreviated name: ";
   std::cin >> abbreviation;
 
-  table.add(Stock(name, isin, abbreviation));
+  Stock newEntry(name, isin, abbreviation);
+
+  if (withCSV) {
+    newEntry.readFile(file);
+    newEntry.printData();
+  }
+
+  table.add(newEntry);
   table.printTable();
 
   return true;
@@ -72,10 +79,27 @@ bool Controller::add() {
 bool Controller::del() { return false; }
 
 bool Controller::import() {
-  return false;
+  std::string file;
+  std::cout
+      << "Enter the filename, including the path and the file extension:\n";
+  std::cout << "Example: aux/MSFT.csv\n";
+
+  std::cin >> file;
+
+  std::cout << "Would you like to add this data to an existing entry?\n";
+  std::cout << "y\\n\n";
+  char choice;
+  std::cin >> choice;
+
+  if (choice == 'y') {
+    search(true, file);
+  } else {
+    add(true, file);
+  }
+  return true;
 }
 
-bool Controller::search() {
+bool Controller::search(bool withCSV, std::string file) {
   std::string abbreviation;
   std::cout << "Enter the abbreviated name: ";
   std::cin >> abbreviation;
@@ -86,6 +110,10 @@ bool Controller::search() {
 
   if (found) {
     result.printStock();
+  }
+  if (withCSV) {
+    result.readFile(file);
+    result.printData();
   }
 
   return found;

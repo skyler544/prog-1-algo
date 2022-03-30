@@ -11,10 +11,10 @@ public:
   void menu();
   void confirmation(bool result);
 
-  bool add();
+  bool add(bool withCSV, std::string file);
   bool del();
   bool import();
-  bool search();
+  bool search(bool withCSV, std::string file);
   bool plot();
   bool save();
   bool load();
