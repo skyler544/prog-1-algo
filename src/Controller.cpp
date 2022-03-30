@@ -1,9 +1,11 @@
 #include "Controller.h"
 #include "Stock.h"
+#include "sysmacro.h"
 
 void Controller::menu() {
   bool loop = true;
   while (loop) {
+    // clear();
     std::cout << "Welcome to your personal stock controller.\n"
               << "Enter one of the following numbers in order to proceed: \n"
               << "1. ADD: Add a stock to your portfolio.\n"
@@ -49,7 +51,9 @@ void Controller::menu() {
 }
 
 void Controller::confirmation(bool result) {
+  std::cout << "Result: ";
   result ? std::cout << "Success\n" : std::cout << "Failure\n";
+  std::cout << "\n";
 }
 
 bool Controller::add(bool withCSV, std::string file) {
