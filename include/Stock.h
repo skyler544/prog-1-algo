@@ -13,7 +13,6 @@ private:
   int emptyFlag;   // 0 for an empty stock
 
   StockNode kursdaten[30];
-
   StockNode *head;
 
 public:

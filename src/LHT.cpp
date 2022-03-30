@@ -19,7 +19,7 @@ Stock LHT::find(Stock entry) {
 
   // if we reach en empty index,  we know that the element
   // we want is not in the table
-  while (table[i].getEmpty() != EMPTY && step < LIMIT) {
+  while (table[i].getEmpty() != EMPTY && step <= numSavedOrDeleted) {
 
     // we can take advantage of short circuit evaluation to
     // condense this logic. in the case that the current
@@ -103,7 +103,7 @@ bool LHT::remove(Stock entry) {
 
   // look for the entry until ...
   // TODO: add a condition to stop after a long (?) time
-  while (table[i].getEmpty() != EMPTY && step < LIMIT) {
+  while (table[i].getEmpty() != EMPTY && step <= numSavedOrDeleted) {
 
     Stock curr = table[i];
 
