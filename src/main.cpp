@@ -1,20 +1,21 @@
 #include "Controller.h"
-#include "Stock.h"
 #include "LHT.h"
+#include "Stock.h"
 #include <iostream>
 
 int main(int argc, char *argv[]) {
 
   LHT table;
 
-//  Controller controller;
+  Controller controller;
+
+  std::cout << sizeof(table);
 
   // Stock test;
 
   // test.readFile("aux/MSFT.csv");
 
   // controller.menu();
-
 
   // table.add(41025703);
   // table.add(41025717);

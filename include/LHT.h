@@ -6,7 +6,8 @@
 
 class LHT {
 private:
-  static const int SIZE = 1847;
+  // static const int SIZE = 1871;
+  static const int SIZE = 593;
   static const int EMPTY = 0;
   static const int DEL = -1;
   static const int LIMIT = 200;

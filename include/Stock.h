@@ -12,8 +12,8 @@ private:
   int deletedFlag; // -1 for deleted stock
   int emptyFlag;   // 0 for an empty stock
 
-  StockNode kursdaten[30];
-  StockNode *head;
+  // StockNode kursdaten[30];
+ StockNode *head;
 
 public:
   Stock();
