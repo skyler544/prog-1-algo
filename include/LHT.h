@@ -6,11 +6,11 @@
 
 class LHT {
 private:
-  static const int SIZE = 13;
+  static const int SIZE = 1847;
   static const int EMPTY = 0;
   static const int DEL = -1;
-  static const int HASH_MODULUS = 100;
-  static const int LIMIT = 100;
+  // static const int HASH_MODULUS = 100;
+  static const int LIMIT = 200;
   Stock table[SIZE];
   int numSaved;
   int numSavedOrDeleted;
