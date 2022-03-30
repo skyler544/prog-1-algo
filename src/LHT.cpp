@@ -15,7 +15,7 @@ void LHT::setNumSavedOrDeleted(int newVal) { numSavedOrDeleted = newVal; }
 Stock LHT::find(Stock entry) {
 
   // first, find the appropriate index
-  int i = hash(entry.getShortName());
+  int i = hash(entry.getAbbreviation());
   // prepare a counter and a step size for the linear probing
   int step = 0;
   int base = i;
@@ -32,7 +32,7 @@ Stock LHT::find(Stock entry) {
     // the right hand side of the && operator, so it simply
     // isn't evaluated.
     if (table[i].getDeleted() != DEL &&
-        table[i].getShortName() == entry.getShortName()) {
+        table[i].getAbbreviation() == entry.getAbbreviation()) {
       // found the element; return it
       return table[i];
     }
@@ -62,7 +62,7 @@ bool LHT::add(Stock entry) {
   }
 
   // find the appropriate index
-  int i = hash(entry.getShortName());
+  int i = hash(entry.getAbbreviation());
   // prepare a counter and a step size for the linear probing
   int step = 0;
   int base = i;
@@ -100,7 +100,7 @@ bool LHT::add(Stock entry) {
 bool LHT::remove(Stock entry) {
 
   // find the appropriate index
-  int i = hash(entry.getShortName());
+  int i = hash(entry.getAbbreviation());
   // prepare a counter and a step size for the quadratic probing
   int step = 0;
   int base = i;
@@ -112,7 +112,7 @@ bool LHT::remove(Stock entry) {
     Stock curr = table[i];
 
     if (curr.getDeleted() != DEL &&
-        entry.getShortName() == curr.getShortName()) {
+        entry.getAbbreviation() == curr.getAbbreviation()) {
 
       // we found the element we want to remove, so
       // go ahead and delete it.
@@ -140,13 +140,13 @@ bool LHT::remove(Stock entry) {
 //       the resulting indexes were below 200 or something,
 //       even large indexes like 790 are feasibly addressed?
 //       does this lead to too much clustering?
-int LHT::hash(std::string shortName) {
+int LHT::hash(std::string abbreviation) {
   int sum = 0;
 
-  // std::cout << "sn: " << shortName.length() << "\n";
+  // std::cout << "sn: " << abbreviation.length() << "\n";
 
-  for (long unsigned int i = 0; i < shortName.length(); i++) {
-    sum = sum + int(shortName[i]);
+  for (long unsigned int i = 0; i < abbreviation.length(); i++) {
+    sum = sum + int(abbreviation[i]);
     // std::cout << sum << "\n";
   }
 

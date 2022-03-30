@@ -5,16 +5,16 @@
 
 Stock::Stock() {
   name = "";
-  idNumber = "";
-  shortName = "";
+  isin = "";
+  abbreviation = "";
   deletedFlag = 1;
   emptyFlag = 0;
 }
 
 Stock::Stock(std::string n, std::string i, std::string s) {
   name = n;
-  idNumber = i;
-  shortName = s;
+  isin = i;
+  abbreviation = s;
   emptyFlag = 1;
   deletedFlag = 1;
 }
@@ -24,8 +24,8 @@ bool loadData(std::string file) { return false; }
 void Stock::printStock() {
   std::cout << "Date: " << name << "\n";
   std::cout << "ISIN (WKN): ";
-  std::cout << idNumber << "\n";
-  std::cout << "Abbreviation: " << shortName << "\n";
+  std::cout << isin << "\n";
+  std::cout << "Abbreviation: " << abbreviation << "\n";
 }
 
 void Stock::printData() {
@@ -102,7 +102,7 @@ void Stock::readFile(std::string fileName) {
   printData();
 }
 
-std::string Stock::getShortName() { return shortName; }
+std::string Stock::getAbbreviation() { return abbreviation; }
 void Stock::setDeleted() { deletedFlag = -1; }
 int Stock::getDeleted() { return deletedFlag; }
 void Stock::setEmpty() { emptyFlag = 0; }

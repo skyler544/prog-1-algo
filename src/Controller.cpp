@@ -54,16 +54,16 @@ void Controller::confirmation(bool result) {
 
 bool Controller::add() {
 
-  std::string n, i, s;
+  std::string name, isin, abbreviation;
 
   std::cout << "Enter the name of the stock: ";
-  std::cin >> n;
+  std::cin >> name;
   std::cout << "Enter the ISIN (WKN): ";
-  std::cin >> i;
+  std::cin >> isin;
   std::cout << "Enter the abbreviated name: ";
-  std::cin >> s;
+  std::cin >> abbreviation;
 
-  Stock newStock(n, i, s);
+  Stock newStock(name, isin, abbreviation);
 
   // newStock.printStock();
 
@@ -75,7 +75,15 @@ bool Controller::add() {
 }
 bool Controller::del() { return false; }
 bool Controller::import() { return false; }
-bool Controller::search() { return false; }
+
+bool Controller::search() {
+std::string entry;
+  std::cout << "Enter the ISIN (WKN): ";
+  std::cin >> entry;
+
+  return false;
+}
+
 bool Controller::plot() { return false; }
 bool Controller::save() { return false; }
 bool Controller::load() { return false; }

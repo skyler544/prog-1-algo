@@ -6,8 +6,8 @@
 class Stock {
 private:
   std::string name;
-  std::string idNumber;
-  std::string shortName;
+  std::string isin;
+  std::string abbreviation;
 
   int deletedFlag; // -1 for deleted stock
   int emptyFlag;   // 0 for an empty stock
@@ -21,7 +21,7 @@ public:
   Stock(std::string n, std::string i, std::string s);
 
   StockNode *getHead();
-  std::string getShortName();
+  std::string getAbbreviation();
   void setHead(StockNode *n);
   void prepend(StockNode *n);
   void append(StockNode *n);

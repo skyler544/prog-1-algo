@@ -25,7 +25,7 @@ public:
   void setNumSavedOrDeleted(int newVal);
   /* void setD(int newVal); */
   void storeHashed(int entry);
-  int hash(std::string shortName);
+  int hash(std::string abbreviation);
   Stock find(Stock entry);
   bool remove(Stock entry);
   bool add(Stock entry);
