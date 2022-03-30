@@ -4,48 +4,48 @@
 void Controller::menu() {
   bool loop = true;
   while (loop) {
-  std::cout
-      << "Welcome to your personal stock controller.\n"
-      << "Enter one of the following numbers in order to proceed: \n"
-      << "1. ADD: Add a stock to your portfolio.\n"
-      << "2. DEL: Delete a stock from your portfolio.\n"
-      << "3. IMPORT: Import the stock history of the last month from a file.\n"
-      << "4. SEARCH: Locate a stock in the portfolio.\n"
-      << "5. PLOT: Graph the stock performance from the past 30 days.\n"
-      << "6. SAVE: Save your portfolio to a file.\n"
-      << "7. LOAD: Load your portfolio from a file.\n"
-      << "8. QUIT: Leave the stock controller.\n";
+    std::cout << "Welcome to your personal stock controller.\n"
+              << "Enter one of the following numbers in order to proceed: \n"
+              << "1. ADD: Add a stock to your portfolio.\n"
+              << "2. DEL: Delete a stock from your portfolio.\n"
+              << "3. IMPORT: Import the stock history of the last month from a "
+                 "file.\n"
+              << "4. SEARCH: Locate a stock in the portfolio.\n"
+              << "5. PLOT: Graph the stock performance from the past 30 days.\n"
+              << "6. SAVE: Save your portfolio to a file.\n"
+              << "7. LOAD: Load your portfolio from a file.\n"
+              << "8. QUIT: Leave the stock controller.\n";
 
-  int input;
-  std::cin >> input;
+    int input;
+    std::cin >> input;
 
-  switch (input) {
-  case (1):
-    confirmation(loop = add());
-    break;
-  case (2):
-    confirmation(loop = del());
-    break;
-  case (3):
-    confirmation(loop = import());
-    break;
-  case (4):
-    confirmation(loop = search());
-    break;
-  case (5):
-    confirmation(loop = plot());
-    break;
-  case (6):
-    confirmation(loop = save());
-    break;
-  case (7):
-    confirmation(loop = load());
-    break;
-  case (8):
-    loop = quit();
-    break;
+    switch (input) {
+    case (1):
+      confirmation(loop = add());
+      break;
+    case (2):
+      confirmation(loop = del());
+      break;
+    case (3):
+      confirmation(loop = import());
+      break;
+    case (4):
+      confirmation(loop = search());
+      break;
+    case (5):
+      confirmation(loop = plot());
+      break;
+    case (6):
+      confirmation(loop = save());
+      break;
+    case (7):
+      confirmation(loop = load());
+      break;
+    case (8):
+      loop = quit();
+      break;
+    }
   }
-}
 }
 
 void Controller::confirmation(bool result) {
@@ -77,11 +77,19 @@ bool Controller::del() { return false; }
 bool Controller::import() { return false; }
 
 bool Controller::search() {
-std::string entry;
-  std::cout << "Enter the ISIN (WKN): ";
-  std::cin >> entry;
+  std::string abbreviation;
+  std::cout << "Enter the abbreviated name: ";
+  std::cin >> abbreviation;
 
-  return false;
+  Stock result = table.find(Stock("", "", abbreviation));
+
+  bool found = result.getEmpty() != 0 ? true : false;
+
+  if (found) {
+    result.printStock();
+  }
+
+  return found;
 }
 
 bool Controller::plot() { return false; }

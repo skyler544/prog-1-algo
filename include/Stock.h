@@ -33,7 +33,7 @@ public:
 
   void setDeleted();
   int getDeleted();
-  void setEmpty();
+  void setEmpty(int val);
   int getEmpty();
 };
 

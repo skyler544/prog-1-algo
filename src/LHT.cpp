@@ -93,6 +93,7 @@ bool LHT::add(Stock entry) {
 
   numSaved++;
   table[i] = entry;
+  table[i].setEmpty(1);
   return true;
 }
 

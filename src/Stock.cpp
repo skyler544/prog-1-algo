@@ -22,8 +22,9 @@ Stock::Stock(std::string n, std::string i, std::string s) {
 bool loadData(std::string file) { return false; }
 
 void Stock::printStock() {
-  std::cout << "Date: " << name << "\n";
-  std::cout << "ISIN (WKN): ";
+  std::cout << "====================\n";
+  std::cout << "        Date: " << name << "\n";
+  std::cout << "  ISIN (WKN): ";
   std::cout << isin << "\n";
   std::cout << "Abbreviation: " << abbreviation << "\n";
 }
@@ -91,7 +92,8 @@ void Stock::readFile(std::string fileName) {
     getline(inf, adj_close, ',');
     getline(inf, volume, '\n');
 
-    // StockNode *tmp = new StockNode(date, open, high, low, close, adj_close, volume);
+    // StockNode *tmp = new StockNode(date, open, high, low, close, adj_close,
+    // volume);
     prepend(new StockNode(date, open, high, low, close, adj_close, volume));
 
     // StockNode tmp(date, open, high, low, close, adj_close, volume);
@@ -105,5 +107,5 @@ void Stock::readFile(std::string fileName) {
 std::string Stock::getAbbreviation() { return abbreviation; }
 void Stock::setDeleted() { deletedFlag = -1; }
 int Stock::getDeleted() { return deletedFlag; }
-void Stock::setEmpty() { emptyFlag = 0; }
+void Stock::setEmpty(int val) { emptyFlag = val; }
 int Stock::getEmpty() { return emptyFlag; }
