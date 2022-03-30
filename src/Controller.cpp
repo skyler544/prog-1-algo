@@ -83,20 +83,20 @@ bool Controller::import() {
   std::cout
       << "Enter the filename, including the path and the file extension:\n";
   std::cout << "Example: aux/MSFT.csv\n";
-
   std::cin >> file;
 
   std::cout << "Would you like to add this data to an existing entry?\n";
-  std::cout << "y\\n\n";
+  std::cout << "y / n\n";
   char choice;
   std::cin >> choice;
 
+  bool result;
   if (choice == 'y') {
-    search(true, file);
+    result = search(true, file);
   } else {
-    add(true, file);
+    result = add(true, file);
   }
-  return true;
+  return result;
 }
 
 bool Controller::search(bool withCSV, std::string file) {
@@ -111,7 +111,7 @@ bool Controller::search(bool withCSV, std::string file) {
   if (found) {
     result.printStock();
   }
-  if (withCSV) {
+  if (withCSV && found) {
     result.readFile(file);
     result.printData();
   }
