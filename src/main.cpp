@@ -13,9 +13,9 @@ int main(int argc, char *argv[]) {
 
   Stock test;
 
-  test.readFile("aux/MSFT.csv");
+  // test.readFile("aux/MSFT.csv");
 
-  // controller.menu();
+  controller.menu();
 
 
   // table.add(41025703);

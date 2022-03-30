@@ -9,6 +9,8 @@ private:
 
 public:
   void menu();
+  void confirmation(bool result);
+
   bool add();
   bool del();
   bool import();
@@ -16,6 +18,7 @@ public:
   bool plot();
   bool save();
   bool load();
+  bool quit();
 };
 
 #endif // CONTROLLER_H_

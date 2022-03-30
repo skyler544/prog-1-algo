@@ -3,13 +3,20 @@
 #include <fstream>
 #include <iostream>
 
-Stock::Stock() { emptyFlag = 0; }
+Stock::Stock() {
+  name = "";
+  idNumber = "";
+  shortName = "";
+  deletedFlag = 1;
+  emptyFlag = 0;
+}
 
 Stock::Stock(std::string n, std::string i, std::string s) {
   name = n;
   idNumber = i;
   shortName = s;
   emptyFlag = 1;
+  deletedFlag = 1;
 }
 
 bool loadData(std::string file) { return false; }
@@ -18,7 +25,7 @@ void Stock::printStock() {
   std::cout << "Date: " << name << "\n";
   std::cout << "ISIN (WKN): ";
   std::cout << idNumber << "\n";
-  std::cout << ": " << shortName << "\n";
+  std::cout << "Abbreviation: " << shortName << "\n";
 }
 
 void Stock::printData() {
@@ -99,4 +106,4 @@ std::string Stock::getShortName() { return shortName; }
 void Stock::setDeleted() { deletedFlag = -1; }
 int Stock::getDeleted() { return deletedFlag; }
 void Stock::setEmpty() { emptyFlag = 0; }
-int Stock::getEmpty() { return emptyFlag = -1; }
+int Stock::getEmpty() { return emptyFlag; }

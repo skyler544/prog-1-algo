@@ -1,6 +1,9 @@
 #include "Controller.h"
+#include "Stock.h"
 
 void Controller::menu() {
+  bool loop = true;
+  while (loop) {
   std::cout
       << "Welcome to your personal stock controller.\n"
       << "Enter one of the following numbers in order to proceed: \n"
@@ -12,46 +15,63 @@ void Controller::menu() {
       << "6. SAVE: Save your portfolio to a file.\n"
       << "7. LOAD: Load your portfolio from a file.\n"
       << "8. QUIT: Leave the stock controller.\n";
-  int input;
 
+  int input;
   std::cin >> input;
 
   switch (input) {
   case (1):
-    add() ? std::cout << "Success\n" : std::cout << "Failure\n";
+    confirmation(loop = add());
     break;
   case (2):
-    del() ? std::cout << "Success\n" : std::cout << "Failure\n";
+    confirmation(loop = del());
     break;
   case (3):
-    import() ? std::cout << "Success\n" : std::cout << "Failure\n";
+    confirmation(loop = import());
     break;
   case (4):
-    search() ? std::cout << "Success\n" : std::cout << "Failure\n";
+    confirmation(loop = search());
     break;
   case (5):
-    plot() ? std::cout << "Success\n" : std::cout << "Failure\n";
+    confirmation(loop = plot());
     break;
   case (6):
-    save() ? std::cout << "Success\n" : std::cout << "Failure\n";
+    confirmation(loop = save());
     break;
   case (7):
-    load() ? std::cout << "Success\n" : std::cout << "Failure\n";
+    confirmation(loop = load());
     break;
   case (8):
-    std::cout << "Goodbye\n";
+    loop = quit();
     break;
   }
+}
+}
+
+void Controller::confirmation(bool result) {
+  result ? std::cout << "Success\n" : std::cout << "Failure\n";
 }
 
 bool Controller::add() {
 
   std::string n, i, s;
 
-  std::cout
-      << "Enter the name of the stock, its ISIN (WKN), and abbreviated name.";
+  std::cout << "Enter the name of the stock: ";
+  std::cin >> n;
+  std::cout << "Enter the ISIN (WKN): ";
+  std::cin >> i;
+  std::cout << "Enter the abbreviated name: ";
+  std::cin >> s;
 
-  return false;
+  Stock newStock(n, i, s);
+
+  // newStock.printStock();
+
+  table.add(newStock);
+
+  table.printTable();
+
+  return true;
 }
 bool Controller::del() { return false; }
 bool Controller::import() { return false; }
@@ -59,3 +79,7 @@ bool Controller::search() { return false; }
 bool Controller::plot() { return false; }
 bool Controller::save() { return false; }
 bool Controller::load() { return false; }
+bool Controller::quit() {
+  std::cout << "Goodbye\n";
+  return false;
+}

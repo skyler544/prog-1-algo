@@ -20,9 +20,11 @@ Stock LHT::find(Stock entry) {
   int step = 0;
   int base = i;
 
+  // std::cout << "i: " << i << "\n";
+
   // if we reach en empty index,  we know that the element
   // we want is not in the table
-  while (table[i].getEmpty() != EMPTY) {
+  while (table[i].getEmpty() != EMPTY && step < LIMIT) {
 
     // we can take advantage of short circuit evaluation to
     // condense this logic. in the case that the current
@@ -39,7 +41,12 @@ Stock LHT::find(Stock entry) {
     // quadratic probing to look for another place to put it
     step++;
     i = (base + (step * step)) % SIZE;
+
+    // std::cout << "i probe: " << i << "\n";
   }
+  // std::cout << "i after failing find: " << i << "\n";
+  // table[i].printStock();
+  // std::cout << table[i].getDeleted() << "|" << table[i].getEmpty() << "\n";
   // return an empty Stock
   return table[i];
 }
@@ -47,8 +54,10 @@ Stock LHT::find(Stock entry) {
 /* Add a new Stock to the table. */
 bool LHT::add(Stock entry) {
 
+  // std::cout << "made it\n";
   // Don't try to add a duplicate element
-  if (find(entry).getDeleted() != EMPTY) {
+  if (find(entry).getEmpty() != EMPTY) {
+    // std::cout << find(entry).getEmpty();
     return false;
   }
 
@@ -58,13 +67,14 @@ bool LHT::add(Stock entry) {
   int step = 0;
   int base = i;
 
+  // std::cout << table[i].getEmpty() << table[i].getDeleted();
+
   // if the position is occupied, we use quadratic
   // probing to look for another place to put it
   while (table[i].getEmpty() != EMPTY && table[i].getDeleted() != DEL) {
     step++;
     i = (base + (step * step)) % SIZE;
   }
-
 
   // increment the counters...
   // is this check even necessary? the logic is clear enough:
@@ -133,17 +143,24 @@ bool LHT::remove(Stock entry) {
 int LHT::hash(std::string shortName) {
   int sum = 0;
 
+  // std::cout << "sn: " << shortName.length() << "\n";
+
   for (long unsigned int i = 0; i < shortName.length(); i++) {
     sum = sum + int(shortName[i]);
+    // std::cout << sum << "\n";
   }
+
+  // std::cout << "mod sum: " << sum % SIZE << "\n";
 
   return sum % SIZE;
 }
 
 void LHT::printTable() {
   for (int i = 0; i < SIZE; i++) {
+    std::cout << "====================\n";
     std::cout << "Entry " << i << ": ";
+    std::cout << "\n";
     table[i].printStock();
   }
-  std::cout << "\n";
+  // std::cout << "\n";
 }
