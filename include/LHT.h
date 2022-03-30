@@ -12,11 +12,11 @@ private:
   static const int LIMIT = 200;
 
   Stock table[SIZE];
-  int numSaved = 0;
-  int numSavedOrDeleted = 0;
+  int numSaved;
+  int numSavedOrDeleted;
 
 public:
-  // LHT();
+  LHT();
   void storeHashed(int entry);
   int hash(std::string abbreviation);
   Stock find(Stock entry);

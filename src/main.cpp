@@ -7,13 +7,13 @@ int main(int argc, char *argv[]) {
 
   LHT table;
 
-  Controller controller;
+//  Controller controller;
 
   // Stock test;
 
   // test.readFile("aux/MSFT.csv");
 
-  controller.menu();
+  // controller.menu();
 
 
   // table.add(41025703);

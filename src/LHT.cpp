@@ -7,9 +7,10 @@
 // TODO add a condition that prevents the table from becoming overly full
 // TODO do we need that condition if the table is large enough?
 
-// LHT::LHT() {
-//   numSave
-// }
+LHT::LHT() {
+  numSaved = 0;
+  numSavedOrDeleted = 0;
+}
 
 /* Find an entry in the hash table. */
 Stock LHT::find(Stock entry) {

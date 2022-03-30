@@ -1,6 +1,5 @@
 #include "Controller.h"
 #include "Stock.h"
-#include "sysmacro.h"
 
 void Controller::menu() {
   bool loop = true;
